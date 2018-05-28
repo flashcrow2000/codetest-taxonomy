@@ -4,7 +4,7 @@
   "description": "server for taxo demo",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --timeout 10000",
     "start": "node server.js"
   },
   "author": "Cosmin Simon",
@@ -15,5 +15,10 @@
     "http": "0.0.0",
     "querystring": "^0.2.0",
     "watson-developer-cloud": "^3.4.2"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "mocha": "^5.0.0"
   }
 }

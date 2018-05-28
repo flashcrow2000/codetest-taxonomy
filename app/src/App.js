@@ -10,7 +10,6 @@ class App extends Component {
     category: []
   }
   onCategoryReceived = (categ) => {
-    console.log(categ);
     this.setState({category:categ});
   }
   render() {

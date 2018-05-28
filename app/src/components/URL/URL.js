@@ -1,23 +1,29 @@
 import React, { Component } from 'react';
+// Use axios for http requests
 import axios from 'axios';
 import './URL.css';
 
 class URL extends Component {
-
+    // keep the website in the local state, for simplicity
     state = {
         website: ''
     }
     
     clickHandler = () => {
+        // construct the POST obj
         const postObj = {
             url: this.state.website
         };
-        console.log('postObj:', postObj);
+        
         axios.post('http://localhost:3535', postObj)
         .then(response => {
             this.props.categoryReceived(response.data);
         })
-        .catch(error => console.log(error));
+        .catch(error => {
+            // in result we expect either one array of categories, or an error
+            // object containing code and error
+            this.props.categoryReceived({code: 400, error: error});
+        });
         
         
     }
@@ -26,19 +32,13 @@ class URL extends Component {
         return ( 
             <div className="container">
 	            <div className="container__item">
-			        <input type="email" className="form__field" placeholder="Website URL" 
+			        <input type="text" className="form__field" placeholder="Website URL" 
                            value={this.state.website} 
                            onChange={(event) => this.setState({website: event.target.value})}/>
 			        <button type="button" className="btn btn--primary btn--inside uppercase"
                             onClick={this.clickHandler}>Send</button>
 	            </div>
             </div>
-            /*<div>
-                <label className='website-label'>Enter a website to fetch its category:</label><br/>
-                <input type="text" value={this.state.website} 
-                onChange={(event) => this.setState({website: event.target.value})} /><br />
-                <button onClick={this.clickHandler}>Get category</button>
-            </div>*/
          )
     }
 }
