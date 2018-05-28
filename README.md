@@ -1,3 +1,12 @@
+# Project setup
+
+Run `npm install` in the app and server folders
+
+# Run projects
+
+Run `npm start` in the server folder.
+Run `npm start` in the app folder.
+
 # Littledata coding test
 
 One challenge we have at Littledata is to categorise our client's websites by industry sector, so we can compare them with websites from the same industry.
